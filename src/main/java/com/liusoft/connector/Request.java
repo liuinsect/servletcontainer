@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
-
 import com.liusoft.constant.CharConstant;
+
 
 
 public class Request implements HttpServletRequest {

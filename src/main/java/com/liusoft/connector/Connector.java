@@ -15,11 +15,12 @@ import com.liusoft.constant.CharConstant;
 import com.liusoft.constant.HttpHeaderConstant;
 import com.liusoft.exception.ExceptionFactory;
 import com.liusoft.http.RequestHeader;
+import com.liusoft.startup.Initialize;
 
 /**
  *servlet 容器 连接器，负责侦听HTTP请求
  **/
-public class Connector {
+public class Connector implements Initialize{
 	
 	/**
 	 * 
@@ -27,7 +28,7 @@ public class Connector {
 	private volatile boolean done = false;
 	private Logger log = Logger.getLogger(Connector.class);
 	
-	public void initialize(){
+	public Object initialize(){
 		ServerSocket ss = null;
 		try {
 			//TODO 把需要配置的东西抽出来，server.xml
@@ -49,7 +50,7 @@ public class Connector {
 				
 		}
 		
-		
+		return null;
 	}
 
 //	GET /afasfasdf.html HTTP/1.1
