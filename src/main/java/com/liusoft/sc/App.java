@@ -1,4 +1,4 @@
-package com.liusoft;
+package com.liusoft.sc;
 
 /**
  * Hello world!

@@ -1,4 +1,4 @@
-package com.liusoft.connector;
+package com.liusoft.sc.connector;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,10 +11,10 @@ import java.util.Map;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
-import com.liusoft.constant.CharConstant;
-import com.liusoft.constant.HttpHeaderConstant;
-import com.liusoft.exception.ExceptionFactory;
-import com.liusoft.http.RequestHeader;
+import com.liusoft.sc.constant.CharConstant;
+import com.liusoft.sc.constant.HttpHeaderConstant;
+import com.liusoft.sc.exception.ExceptionFactory;
+import com.liusoft.sc.http.RequestHeader;
 import com.liusoft.startup.Initialize;
 
 /**

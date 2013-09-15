@@ -1,4 +1,4 @@
-package com.liusoft.connector;
+package com.liusoft.sc.connector;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,12 +15,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
-import com.liusoft.constant.CharConstant;
+import com.liusoft.sc.constant.CharConstant;
 
 
-
+/**
+ * 并不是HTTP servlet request 
+ * 充当coyote 框架中的request
+ * 实现从socket流到Response对象的转换
+ * @author liukunyang
+ *
+ */
 public class Request implements HttpServletRequest {
-
+	
+	//TODO 考虑这里处理cookie是否合适
 	private Cookie[] cookies;
 	
 	public Cookie[] getCookies() {

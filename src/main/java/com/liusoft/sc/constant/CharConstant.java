@@ -1,4 +1,4 @@
-package com.liusoft.constant;
+package com.liusoft.sc.constant;
 
 public class CharConstant {
 	

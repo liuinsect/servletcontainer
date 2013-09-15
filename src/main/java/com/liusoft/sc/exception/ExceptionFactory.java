@@ -1,4 +1,4 @@
-package com.liusoft.exception;
+package com.liusoft.sc.exception;
 
 public class ExceptionFactory {
 	

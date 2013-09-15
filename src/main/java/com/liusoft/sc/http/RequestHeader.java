@@ -1,9 +1,9 @@
-package com.liusoft.http;
+package com.liusoft.sc.http;
 
 import java.util.Map;
 
-import com.liusoft.constant.HttpHeaderConstant;
-import com.liusoft.exception.ExceptionFactory;
+import com.liusoft.sc.constant.HttpHeaderConstant;
+import com.liusoft.sc.exception.ExceptionFactory;
 
 /**
  * 请求头对应实体
