@@ -15,7 +15,7 @@ import com.liusoft.sc.constant.CharConstant;
 import com.liusoft.sc.constant.HttpHeaderConstant;
 import com.liusoft.sc.exception.ExceptionFactory;
 import com.liusoft.sc.http.RequestHeader;
-import com.liusoft.startup.Initialize;
+import com.liusoft.sc.startup.Initialize;
 
 /**
  *servlet 容器 连接器，负责侦听HTTP请求
