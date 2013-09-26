@@ -30,6 +30,15 @@ public interface Server {
 	 */
 	public void addService(Service service);
 	
-
+	
+	public Server getServer();
+	
+//	/**
+//	 * 将server对象注入
+//	 * @author liukunyang
+//	 * @date 2013-9-26	
+//	 * @return
+//	 */
+//	public Server setServer( Server server );
 	
 }

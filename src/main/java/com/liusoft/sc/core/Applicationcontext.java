@@ -4,7 +4,7 @@
 * @date 2013-9-23 下午01:16:33 
 * @version V1.0  
 */ 
-package com.liusoft.core;
+package com.liusoft.sc.core;
 
 import java.io.InputStream;
 import java.net.MalformedURLException;

@@ -4,7 +4,7 @@
 * @date 2013-9-23 下午01:43:27 
 * @version V1.0  
 */ 
-package com.liusoft.core;
+package com.liusoft.sc.core;
 
 import java.beans.PropertyChangeListener;
 import java.io.IOException;

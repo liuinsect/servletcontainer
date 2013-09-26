@@ -19,9 +19,37 @@ import com.liusoft.sc.startup.Initialize;
 
 /**
  *servlet 容器 连接器，负责侦听HTTP请求
+ * 对应于server.xml的connector标签
+ * port="8080" protocol="HTTP/1.1" 
+               connectionTimeout="20000" 
+               redirectPort="8443"
  **/
+
+//TODO 方法整理
 public class Connector implements Initialize{
 	
+	/**
+	 * 监听端口
+	 */
+	private int port;
+	
+	/**
+	 * 协议
+	 */
+	private String protocol;
+	
+	/**
+	 * 连接的超时时间
+	 */
+	private long connectionTimeout;
+	
+	/**
+	 * ssl重定向端口
+	 * 需要安全通信的场合,将把客户请求转发至SSL的redirectPort端口
+	 */
+	private int redirectPort;
+	
+
 	/**
 	 * 
 	 */
@@ -41,6 +69,8 @@ public class Connector implements Initialize{
 			
 				try {
 					Socket socket = ss.accept();
+					//这里应该把socket包装到多线程中去。否则，只能接受一个请求
+					//
 					RequestHeader header = this.parseRquest(socket);
 					
 				} catch (IOException e) {
@@ -99,5 +129,39 @@ public class Connector implements Initialize{
 		this.done = done;
 	}
 
+	public int getPort() {
+		return port;
+	}
+
+	public void setPort(int port) {
+		this.port = port;
+	}
+
+	public String getProtocol() {
+		return protocol;
+	}
+
+	public void setProtocol(String protocol) {
+		this.protocol = protocol;
+	}
+
+	public long getConnectionTimeout() {
+		return connectionTimeout;
+	}
+
+	public void setConnectionTimeout(long connectionTimeout) {
+		this.connectionTimeout = connectionTimeout;
+	}
+
+	public int getRedirectPort() {
+		return redirectPort;
+	}
+
+	public void setRedirectPort(int redirectPort) {
+		this.redirectPort = redirectPort;
+	}
+	
+	
+	
 	
 }

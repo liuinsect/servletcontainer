@@ -4,7 +4,11 @@
 * @date 2013-9-23 下午04:06:07 
 * @version V1.0  
 */ 
-package com.liusoft.core;
+package com.liusoft.sc.core;
+
+import java.util.Random;
+
+import org.apache.log4j.Logger;
 
 import com.liusoft.sc.Lifecycle;
 import com.liusoft.sc.LifecycleException;
@@ -27,7 +31,19 @@ import com.liusoft.sc.startup.Initialize;
  */
 public class StandardServer implements Server, Lifecycle,Initialize {
 	
+	private Logger log = Logger.getLogger( StandardServer.class );
+	
 	private Service[]	 services;
+	
+	/**
+     * The port number on which we wait for shutdown commands.
+     */
+    private int port = 8005;
+
+    /**
+     * The shutdown command string we are looking for.
+     */
+    private String shutdown = "SHUTDOWN";
 	
 	/**
 	 * 初始化services数组
@@ -36,7 +52,7 @@ public class StandardServer implements Server, Lifecycle,Initialize {
 	@Override
 	public Object initialize() {
 		if( services == null || services.length == 0 ){
-			services = new Service[1];
+			services = new StandardService[1];
 		}
 		((Initialize)services[0]).initialize();
 		
@@ -48,8 +64,22 @@ public class StandardServer implements Server, Lifecycle,Initialize {
 	 */
 	@Override
 	public void addService(Service service) {
-		// TODO Auto-generated method stub
+		if( services == null || services.length == 0 ){
+			services = new StandardService[1];
+		}
 		
+		Service[] result = new Service[ services.length+1 ];
+		
+		System.arraycopy(service, 0, result, 0, services.length);
+		result[ services.length + 1 ] = service;	
+		//FIXME 这里需要启动servcie吗？
+		if( service != null && service instanceof Lifecycle ){
+			try {
+				( (Lifecycle)service ).start();
+			} catch (LifecycleException e) {
+				log.error("service启动失败了", e);
+			}
+		}
 	}
 
 	/* (non-Javadoc)
@@ -105,7 +135,41 @@ public class StandardServer implements Server, Lifecycle,Initialize {
 		// TODO Auto-generated method stub
 		
 	}
+
+	/* (non-Javadoc)
+	 * @see com.liusoft.sc.Server#getServer()
+	 */
+	@Override
+	public Server getServer() {
+		return this;
+	}
 	
+	
+	
+	/**
+	 * digester mapping  开始 
+	 */
+	
+	 /**
+     * Set the port number we listen to for shutdown commands.
+     *
+     * @param port The new port number
+     */
+    public void setPort(int port) {
+
+        this.port = port;
+
+    }
+
+
+    /**
+     * Return the shutdown command string we are waiting for.
+     */
+    public String getShutdown() {
+
+        return (this.shutdown);
+
+    }
 	
 
 	
