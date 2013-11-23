@@ -6,7 +6,9 @@
 */ 
 package com.liusoft.sc.constant;
 
-/**  
+/**
+ * 模拟一个tomcat目录
+ * 用于解析配置文件
  * @Package com.liusoft.sc.constant 
  * @author liukunyang
  * @date 2013-9-26 下午02:47:01 
