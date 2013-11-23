@@ -89,43 +89,13 @@ public class EngineRuleSet extends RuleSetBase {
      */
     public void addRuleInstances(Digester digester) {
         
-        digester.addObjectCreate(prefix + "Engine",
-                                 "com.liusoft.sc.core.StandardEngine",
-                                 "className");
+        digester.addObjectCreate(prefix + "Engine", "com.liusoft.sc.core.StandardEngine","className");
         digester.addSetProperties(prefix + "Engine");
 //        digester.addRule(prefix + "Engine", new LifecycleListenerRule("com.liusoft.sc.startup.EngineConfig", "engineConfigClass"));
         digester.addSetNext(prefix + "Engine",
                             "setContainer",
                             "com.liusoft.sc.Container");
 
-        //Cluster configuration start
-//        digester.addObjectCreate(prefix + "Engine/Cluster",
-//                                 null, // MUST be specified in the element
-//                                 "className");
-//        digester.addSetProperties(prefix + "Engine/Cluster");
-//        digester.addSetNext(prefix + "Engine/Cluster",
-//                            "setCluster",
-//                            "com.liusoft.sc.Cluster");
-        //Cluster configuration end
-
-//        digester.addObjectCreate(prefix + "Engine/Listener",
-//                                 null, // MUST be specified in the element
-//                                 "className");
-//        digester.addSetProperties(prefix + "Engine/Listener");
-//        digester.addSetNext(prefix + "Engine/Listener",
-//                            "addLifecycleListener",
-//                            "com.liusoft.sc.LifecycleListener");
-
-
-//        digester.addRuleSet(new RealmRuleSet(prefix + "Engine/"));
-
-//        digester.addObjectCreate(prefix + "Engine/Valve",
-//                                 null, // MUST be specified in the element
-//                                 "className");
-//        digester.addSetProperties(prefix + "Engine/Valve");
-//        digester.addSetNext(prefix + "Engine/Valve",
-//                            "addValve",
-//                            "com.liusoft.sc.Valve");
 
     }
 

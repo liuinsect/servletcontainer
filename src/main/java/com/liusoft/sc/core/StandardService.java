@@ -53,8 +53,6 @@ public class StandardService implements Service,Initialize{
 		
 		container = new StandardEngine();
 		
-		
-		
 		return null;
 	}
 
@@ -76,7 +74,7 @@ public class StandardService implements Service,Initialize{
 
 
 	public void addConnector(Connector connector) {
-		if( connector == null  ){
+		if( connectors == null  ){
 			this.connectors = new Connector[1];
 		}
 		

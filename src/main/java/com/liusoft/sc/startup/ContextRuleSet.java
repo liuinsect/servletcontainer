@@ -8,6 +8,7 @@ package com.liusoft.sc.startup;
 
 import org.apache.commons.digester.Digester;
 import org.apache.commons.digester.RuleSet;
+import org.apache.commons.digester.RuleSetBase;
 
 /**  
  * @Package com.liusoft.startup 
@@ -15,9 +16,20 @@ import org.apache.commons.digester.RuleSet;
  * @date 2013-9-23 下午01:25:55 
  * @version V1.0  
  */
-public class ContextRuleSet implements RuleSet {
+public class ContextRuleSet extends RuleSetBase {
 
-	
+
+    public ContextRuleSet(){
+
+    }
+
+    public ContextRuleSet(String prefix) {
+
+        super();
+        this.namespaceURI = null;
+
+    }
+
 	@Override
 	/**
 	 * 配置xml文件的映射关系

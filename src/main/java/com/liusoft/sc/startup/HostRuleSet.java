@@ -97,16 +97,10 @@ public class HostRuleSet extends RuleSetBase {
         //传递父类的 类加载启 到子类中去
 //        digester.addRule(prefix + "Host",
 //                         new CopyParentClassLoaderRule());
-        digester.addRule(prefix + "Host",
-                         new LifecycleListenerRule
-                         ("com.liusoft.sc.startup.HostConfig",
-                          "hostConfigClass"));
-        digester.addSetNext(prefix + "Host",
-                            "addChild",
-                            "com.liusoft.sc.Container");
+        digester.addRule(prefix + "Host", new LifecycleListenerRule("com.liusoft.sc.startup.HostConfig", "hostConfigClass"));
+        digester.addSetNext(prefix + "Host", "addChild", "com.liusoft.sc.Container");
 
-        digester.addCallMethod(prefix + "Host/Alias",
-                               "addAlias", 0);
+        digester.addCallMethod(prefix + "Host/Alias", "addAlias", 0);
 
         //Cluster configuration start
 //        digester.addObjectCreate(prefix + "Host/Cluster",

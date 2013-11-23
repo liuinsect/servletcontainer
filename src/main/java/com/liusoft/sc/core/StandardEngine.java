@@ -1,9 +1,3 @@
-/**  
-* @Package com.liusoft.core 
-* @author A18ccms A18ccms_gmail_com  
-* @date 2013-9-23 下午04:43:30 
-* @version V1.0  
-*/ 
 package com.liusoft.sc.core;
 
 import com.liusoft.sc.Container;

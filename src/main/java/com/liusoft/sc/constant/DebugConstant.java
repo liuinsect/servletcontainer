@@ -6,6 +6,8 @@
 */ 
 package com.liusoft.sc.constant;
 
+import java.io.File;
+
 /**
  * 模拟一个tomcat目录
  * 用于解析配置文件
@@ -16,14 +18,18 @@ package com.liusoft.sc.constant;
  */
 public class DebugConstant {
 	
-	
+
+
+
 	static{
-		System.setProperty("sc.home", "E:\\workspace2\\servletcontainer\\sc\\");
-		System.setProperty("sc.base", "E:\\workspace2\\servletcontainer\\sc\\");
+		System.setProperty("sc.home", System.getProperty("user.dir") +"\\"+SystemConstant.PROJECT_NAME+"\\sc\\");
+		System.setProperty("sc.base",  System.getProperty("user.dir") +"\\"+SystemConstant.PROJECT_NAME+"\\sc\\");
 	}
 	
 	
 	public static void init(){
 		
 	}
+
+
 }

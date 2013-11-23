@@ -27,7 +27,7 @@ import com.liusoft.sc.Lifecycle;
 import com.liusoft.sc.LifecycleListener;
 
 /**
- * 去读配置文件中的arrt
+ * 去读配置文件中的attr
  * 否则使用默认的config文件
  * 将该config实例化后添加到当前类中去，是的当前类出发时间的时候配置文件类可以做事
  */
