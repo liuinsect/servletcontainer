@@ -6,7 +6,12 @@
 */ 
 package com.liusoft.sc.core;
 
-/**  
+import com.liusoft.sc.Host;
+import com.liusoft.sc.Lifecycle;
+import com.liusoft.sc.LifecycleException;
+import com.liusoft.sc.LifecycleListener;
+
+/**
  * @Package com.liusoft.sc.core 
  * @author liukunyang
  * @date 2013-9-26 下午04:16:24 
@@ -15,7 +20,7 @@ package com.liusoft.sc.core;
             unpackWARs="true" autoDeploy="true"
             xmlValidation="false" xmlNamespaceAware="false"  
  */
-public class StandardHost {
+public class StandardHost  extends  ContainerBase implements Lifecycle,Host {
 	
 	//digester 映射属性
 	private String name;
@@ -78,6 +83,30 @@ public class StandardHost {
 	public void setXmlNamespaceAware(boolean xmlNamespaceAware) {
 		this.xmlNamespaceAware = xmlNamespaceAware;
 	}
-	
-	
+
+
+    @Override
+    public void addLifecycleListener(LifecycleListener listener) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public LifecycleListener[] findLifecycleListeners() {
+        return new LifecycleListener[0];  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void removeLifecycleListener(LifecycleListener listener) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void start() throws LifecycleException {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void stop() throws LifecycleException {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

@@ -9,7 +9,7 @@ package com.liusoft.sc;
  */
 
 import java.io.IOException;
-import javax.servlet.ServletException;
+
 
 import com.liusoft.sc.connector.Request;
 import com.liusoft.sc.connector.Response;
@@ -62,10 +62,9 @@ public interface Valve {
      * @param request
      * @param response
      * @throws IOException
-     * @throws ServletException
      */
     public void invoke(Request request, Response response)
-        throws IOException, ServletException;
+        throws IOException;
 
 //
 //    

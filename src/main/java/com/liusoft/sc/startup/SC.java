@@ -8,7 +8,6 @@ package com.liusoft.sc.startup;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 import org.apache.commons.digester.Digester;
 import org.apache.log4j.Logger;
@@ -16,7 +15,6 @@ import org.xml.sax.SAXException;
 
 import com.liusoft.sc.constant.DebugConstant;
 import com.liusoft.sc.core.StandardService;
-import com.sun.org.apache.xml.internal.resolver.Catalog;
 
 /**  
  * sc 容器启动类
@@ -80,6 +78,10 @@ public class SC extends StandardService {
 			
         	digester.push(this);
         	digester.parse( configFile );
+            if( log.isDebugEnabled() ){
+                log.info("配置文件加载完毕");
+            }
+
 		} catch (IOException e) {
 			log.error("解析server.xml出错了", e);
 		} catch (SAXException e) {

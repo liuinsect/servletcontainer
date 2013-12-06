@@ -18,6 +18,7 @@ import org.apache.commons.digester.RuleSetBase;
  */
 public class ContextRuleSet extends RuleSetBase {
 
+    private String prefix = null;
 
     public ContextRuleSet(){
 
@@ -27,6 +28,7 @@ public class ContextRuleSet extends RuleSetBase {
 
         super();
         this.namespaceURI = null;
+        this.prefix = prefix;
 
     }
 
@@ -34,9 +36,10 @@ public class ContextRuleSet extends RuleSetBase {
 	/**
 	 * 配置xml文件的映射关系
 	 */
-	public void addRuleInstances(Digester arg0) {
+	public void addRuleInstances(Digester digester) {
 		// TODO Auto-generated method stub
-
+        digester.addObjectCreate(prefix + "Context",  "com.liusoft.sc.core.StandardContext","className");
+        digester.addSetProperties(prefix + "Context");
 	}
 
 	/* (non-Javadoc)

@@ -52,8 +52,9 @@ public class SCRuleSet implements RuleSet {
 
 //
 //        digester.addRuleSet(new EngineRuleSet("Server/Service/"));
-//        digester.addRuleSet(new HostRuleSet("Server/Service/Engine/"));
-//        digester.addRuleSet(new ContextRuleSet("Server/Service/Engine/Host/"));
+        digester.addObjectCreate("Server/Service/Engine", "com.liusoft.sc.core.StandardEngine", "className");
+        digester.addRuleSet(new HostRuleSet("Server/Service/Engine/"));
+        digester.addRuleSet(new ContextRuleSet("Server/Service/Engine/Host/"));
 
         digester.addSetNext("Server/Service", "addService", "com.liusoft.sc.Service");
 	}
