@@ -18,6 +18,7 @@ import com.liusoft.sc.core.StandardService;
 
 /**  
  * sc 容器启动类
+ * 通过解析conf下面的server.xml来开始容器的初始化工作。
  * @Package com.liusoft.sc.startup 
  * @author liukunyang
  * @date 2013-9-24 上午10:06:14 
@@ -87,7 +88,8 @@ public class SC extends StandardService {
 		} catch (SAXException e) {
 			log.error("解析server.xml出错了", e);
 		}
-		
+
+        this.getServer();
 		
 		
 	}
