@@ -3,6 +3,7 @@ package com.liusoft.sc.core;
 import com.liusoft.sc.Container;
 import com.liusoft.sc.Engine;
 import com.liusoft.sc.Host;
+import com.liusoft.sc.LifecycleException;
 import com.liusoft.sc.startup.Initialize;
 
 /**  
@@ -16,8 +17,6 @@ public class StandardEngine extends ContainerBase  implements Initialize , Engin
 	protected String name;
 	
 	protected String defaultHost;
-	
-	
 	
 
 	@Override
@@ -59,8 +58,15 @@ public class StandardEngine extends ContainerBase  implements Initialize , Engin
 	public void setDefaultHost(String defaultHost) {
 		this.defaultHost = defaultHost;
 	}
-	
-	
-	
-	
+
+    /**
+     * //到父类中去启动子容器
+     * @throws LifecycleException
+     */
+    public void start() throws LifecycleException {
+        //到父类中去启动子容器
+        super.start();
+    }
+
+
 }

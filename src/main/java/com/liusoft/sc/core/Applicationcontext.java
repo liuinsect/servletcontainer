@@ -18,13 +18,22 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
 /**  
- * sc的应用上下文
+ * /**
+ * Standard implementation of <code>ServletContext</code> that represents
+ * a web application's execution environment.  An instance of this class is
+ * associated with each instance of <code>StandardContext</code>.
+ *
+ * @author Craig R. McClanahan
+ * @author Remy Maucherat
+ * @version $Id: ApplicationContext.java 1022315 2010-10-13 22:41:45Z kkolinko $
+ *
+ * 对应用中暴露的是 ApplicationContextFacade 包装后的对象
  * @Package com.liusoft.core 
  * @author liukunyang
  * @date 2013-9-23 下午01:16:33 
  * @version V1.0  
  */
-public class Applicationcontext implements ServletContext {
+public class ApplicationContext implements ServletContext {
 
 	/* (non-Javadoc)
 	 * @see javax.servlet.ServletContext#getAttribute(java.lang.String)

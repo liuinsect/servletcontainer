@@ -20,7 +20,7 @@ import com.liusoft.sc.LifecycleListener;
             unpackWARs="true" autoDeploy="true"
             xmlValidation="false" xmlNamespaceAware="false"  
  */
-public class StandardHost  extends  ContainerBase implements Lifecycle,Host {
+public class StandardHost  extends  ContainerBase implements Host {
 	
 	//digester 映射属性
 	private String name;
@@ -84,29 +84,12 @@ public class StandardHost  extends  ContainerBase implements Lifecycle,Host {
 		this.xmlNamespaceAware = xmlNamespaceAware;
 	}
 
-
-    @Override
-    public void addLifecycleListener(LifecycleListener listener) {
-        //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public LifecycleListener[] findLifecycleListeners() {
-        return new LifecycleListener[0];  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public void removeLifecycleListener(LifecycleListener listener) {
-        //To change body of implemented methods use File | Settings | File Templates.
-    }
-
     @Override
     public void start() throws LifecycleException {
         //To change body of implemented methods use File | Settings | File Templates.
+        //TODO 这里读取valve 并且添加到管道中去
+        super.start();
     }
 
-    @Override
-    public void stop() throws LifecycleException {
-        //To change body of implemented methods use File | Settings | File Templates.
-    }
+
 }

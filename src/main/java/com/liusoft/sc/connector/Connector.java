@@ -8,6 +8,9 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.liusoft.sc.Lifecycle;
+import com.liusoft.sc.LifecycleException;
+import com.liusoft.sc.LifecycleListener;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
@@ -26,7 +29,7 @@ import com.liusoft.sc.startup.Initialize;
  **/
 
 //TODO 方法整理
-public class Connector implements Initialize{
+public class Connector implements Initialize,Lifecycle{
 	
 	/**
 	 * 监听端口
@@ -160,8 +163,34 @@ public class Connector implements Initialize{
 	public void setRedirectPort(int redirectPort) {
 		this.redirectPort = redirectPort;
 	}
-	
-	
-	
-	
+
+
+    @Override
+    public void addLifecycleListener(LifecycleListener listener) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public LifecycleListener[] findLifecycleListeners() {
+        return new LifecycleListener[0];  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void removeLifecycleListener(LifecycleListener listener) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    /**
+     * 被service 调用，启动sokect监听器，监听HTTP请求 或ajp请求
+     * @throws LifecycleException
+     */
+    @Override
+    public void start() throws LifecycleException {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void stop() throws LifecycleException {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

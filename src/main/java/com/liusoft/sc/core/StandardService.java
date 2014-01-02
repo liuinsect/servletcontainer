@@ -6,13 +6,9 @@
 */ 
 package com.liusoft.sc.core;
 
+import com.liusoft.sc.*;
 import org.apache.log4j.Logger;
 
-import com.liusoft.sc.Container;
-import com.liusoft.sc.Lifecycle;
-import com.liusoft.sc.LifecycleException;
-import com.liusoft.sc.Server;
-import com.liusoft.sc.Service;
 import com.liusoft.sc.connector.Connector;
 import com.liusoft.sc.startup.Initialize;
 
@@ -23,7 +19,7 @@ import com.liusoft.sc.startup.Initialize;
  * @date 2013-9-23 下午04:09:35 
  * @version V1.0  
  */
-public class StandardService implements Service,Initialize{
+public class StandardService implements Service,Initialize,Lifecycle{
 		
 	private Logger log = Logger.getLogger( StandardService.class );
 	/**
@@ -100,10 +96,64 @@ public class StandardService implements Service,Initialize{
 		return container;
 	}
 
+    /**
+     * 给servic设置容器
+     * @param container
+     */
 	public void setContainer(Container container) {
 		this.container = container;
-	}
-	
-	
-	
+        if (started && (container instanceof Lifecycle)) {
+            try {
+                ((Lifecycle) container).start();
+            } catch (LifecycleException e) {
+                log.error( "standardService.connector.startFailed", e);
+            }
+        }
+
+    }
+
+
+    @Override
+    public void addLifecycleListener(LifecycleListener listener) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public LifecycleListener[] findLifecycleListeners() {
+        return new LifecycleListener[0];  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void removeLifecycleListener(LifecycleListener listener) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void start() throws LifecycleException {
+       if(started){
+           if (log.isInfoEnabled()) {
+               log.info("standardService.start.started");
+           }
+           return;
+       }
+
+       started = true;
+       if( this.container != null ){
+           if (container instanceof Lifecycle) {
+               ((Lifecycle) container).start();
+           }
+       }
+
+        if( this.connectors != null ){
+            for (int i = 0; i < connectors.length; i++) {
+                ((Lifecycle)connectors[i]).start();
+            }
+        }
+
+    }
+
+    @Override
+    public void stop() throws LifecycleException {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

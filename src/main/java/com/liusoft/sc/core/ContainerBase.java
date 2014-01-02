@@ -13,11 +13,10 @@ import java.util.HashMap;
 import javax.naming.directory.DirContext;
 import javax.servlet.ServletException;
 
-import com.liusoft.sc.Container;
-import com.liusoft.sc.Loader;
-import com.liusoft.sc.Pipeline;
+import com.liusoft.sc.*;
 import com.liusoft.sc.connector.Request;
 import com.liusoft.sc.connector.Response;
+import com.liusoft.sc.util.LifecycleSupport;
 
 /**  
  * 容器基础类
@@ -26,7 +25,7 @@ import com.liusoft.sc.connector.Response;
  * @date 2013-9-23 下午01:43:27 
  * @version V1.0  
  */
-public class ContainerBase implements Container {
+public class ContainerBase implements Container,Lifecycle {
 	
     /**
      * The child Containers belonging to this Container, keyed by name.
@@ -49,7 +48,12 @@ public class ContainerBase implements Container {
      */
     protected Container parent = null;
 
-    
+    /**
+     * The lifecycle event support for this component.
+     */
+    protected LifecycleSupport lifecycle = new LifecycleSupport(this);
+
+
 	@Override
 	public void addChild(Container child) {
 		
@@ -272,4 +276,44 @@ public class ContainerBase implements Container {
 
 	}
 
+    @Override
+    public void addLifecycleListener(LifecycleListener listener) {
+        //To change body of implemented methods use File | Settings | File Templates.
+        this.lifecycle.addLifecycleListener(listener);
+    }
+
+    @Override
+    public LifecycleListener[] findLifecycleListeners() {
+        return new LifecycleListener[0];  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void removeLifecycleListener(LifecycleListener listener) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    /**
+     * ContainBase启动
+     * 启动Manager
+     * 启动子容器
+     *
+     * 简单起见，只启动子容器
+     * @throws LifecycleException
+     */
+    @Override
+    public void start() throws LifecycleException {
+
+        Container[] children = this.findChildren();
+        for (int i = 0; i < children.length; i++) {
+            if (children[i] instanceof Lifecycle){
+                ((Lifecycle)children[i]).start();
+            }
+        }
+
+    }
+
+    @Override
+    public void stop() throws LifecycleException {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
 }
