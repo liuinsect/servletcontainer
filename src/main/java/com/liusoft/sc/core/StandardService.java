@@ -76,14 +76,16 @@ public class StandardService implements Service,Initialize{
 	public void addConnector(Connector connector) {
 		if( connectors == null  ){
 			this.connectors = new Connector[1];
-		}
-		
-		//先扩容
-		Connector results[] = new Connector[connectors.length + 1];
-		System.arraycopy(connectors, 0, results, 0 , connectors.length);
-		
-		results[connectors.length] = connector;
-		
+            this.connectors[0] = connector;
+		}else{
+            //先扩容
+            Connector results[] = new Connector[connectors.length + 1];
+            System.arraycopy(connectors, 0, results, 0 , connectors.length);
+
+            results[connectors.length] = connector;
+            this.connectors = results;
+        }
+
 	   if (started && (connector instanceof Lifecycle)) {
            try {
                ((Lifecycle) connector).start();

@@ -40,6 +40,7 @@ public class ContextRuleSet extends RuleSetBase {
 		// TODO Auto-generated method stub
         digester.addObjectCreate(prefix + "Context",  "com.liusoft.sc.core.StandardContext","className");
         digester.addSetProperties(prefix + "Context");
+        digester.addSetNext(prefix + "Context", "addChild", "com.liusoft.sc.Container");
 	}
 
 	/* (non-Javadoc)

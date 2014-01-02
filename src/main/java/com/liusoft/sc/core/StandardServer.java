@@ -66,12 +66,16 @@ public class StandardServer implements Server, Lifecycle,Initialize {
 	public void addService(Service service) {
 		if( services == null || services.length == 0 ){
 			services = new StandardService[1];
-		}
+            this.services[0] = service;
+		}else{
+            //or 扩容
+            Service[] result = new Service[ this.services.length + 1 ];
+            System.arraycopy(this.services, 0, result, 0, services.length);
+            result[ services.length ] = service;
+            this.services = result;
+        }
 		
-		Service[] result = new Service[ this.services.length + 1 ];
-		
-		System.arraycopy(this.services, 0, result, 0, services.length);
-		result[ services.length ] = service;
+
 		//FIXME 这里需要启动servcie吗？
 		if( service != null && service instanceof Lifecycle ){
 			try {

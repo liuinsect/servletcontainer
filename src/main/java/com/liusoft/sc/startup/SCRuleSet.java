@@ -37,15 +37,16 @@ public class SCRuleSet implements RuleSet {
         // Configure the actions we will be using
         //初始化server对象
         digester.addObjectCreate("Server", "com.liusoft.sc.core.StandardServer", "className");
-        //调用setServer方法将server对象赋值给当前对象对象
+
         digester.addSetProperties("Server");
+        //调用setServer方法将server对象赋值给当前对象对象
         digester.addSetNext("Server","setServer","com.liusoft.sc.Server");
 
         digester.addObjectCreate("Server/Service", "com.liusoft.sc.core.StandardService", "className");
         digester.addSetProperties("Server/Service");
 
         digester.addObjectCreate("Server/Service/Connector", "com.liusoft.sc.connector.Connector", "className");
-        digester.addSetProperties("Server");
+        digester.addSetProperties("Server/Service/Connector");
         digester.addRule("Server/Service/Connector", new ConnectorCreateRule());
 
         digester.addSetNext("Server/Service/Connector", "addConnector", "com.liusoft.sc.connector.Connector");
@@ -53,8 +54,10 @@ public class SCRuleSet implements RuleSet {
 //
 //        digester.addRuleSet(new EngineRuleSet("Server/Service/"));
         digester.addObjectCreate("Server/Service/Engine", "com.liusoft.sc.core.StandardEngine", "className");
+        digester.addSetProperties("Server/Service/Engine");
         digester.addRuleSet(new HostRuleSet("Server/Service/Engine/"));
         digester.addRuleSet(new ContextRuleSet("Server/Service/Engine/Host/"));
+        digester.addSetNext("Server/Service/Engine", "setContainer", "com.liusoft.sc.core.StandardEngine");
 
         digester.addSetNext("Server/Service", "addService", "com.liusoft.sc.Service");
 	}
