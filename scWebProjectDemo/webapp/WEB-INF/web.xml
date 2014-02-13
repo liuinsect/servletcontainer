@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>SS</display-name>
+  
+	<!--listener -->
+  	<listener>
+		<listener-class>sc.webProject.demo.TestListener</listener-class>
+	</listener>
+	
+	
+	<!-- struts2 filter -->
+	<filter>
+		<filter-name>testFilter</filter-name>
+		<filter-class>osc.webProject.demo.TestFilter</filter-class>
+	</filter>
+		
+	<filter-mapping>
+		<filter-name>testFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+	
+		
+	<servlet>
+		<description>
+		</description>
+		<display-name>testServlet</display-name>
+		<servlet-name>testServlet</servlet-name>
+		<servlet-class>sc.webProject.demo.TestServlet</servlet-class>
+	</servlet>
+	
+
+	<servlet-mapping>
+		<servlet-name>testServlet</servlet-name>
+		<url-pattern>/testServlet</url-pattern>
+	</servlet-mapping>
+	
+
+
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+</web-app>
