@@ -1,0 +1,63 @@
+<web-app version="2.4" >
+
+    <display-name>interfacer-web</display-name>
+
+    <!-- spring listener -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!-- spring config -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring-config.xml</param-value>
+    </context-param>
+
+
+    <servlet>
+        <servlet-name>watermelon</servlet-name>
+        <servlet-class>myservlets.watermelon</servlet-class>
+        <init-param>
+            <param-name>greeting</param-name>
+            <param-value>Welcome</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>watermelon</servlet-name>
+        <url-pattern>/fruit/summer/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- spring character encoding -->
+    <filter>
+        <filter-name>Character Encoding</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+
+
+    <!-- struts2 filter -->
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+
+
+
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+
+</web-app>
