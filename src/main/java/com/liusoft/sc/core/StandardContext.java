@@ -1,14 +1,17 @@
 package com.liusoft.sc.core;
 
+import com.liusoft.sc.Context;
 import com.liusoft.sc.Lifecycle;
 import com.liusoft.sc.LifecycleException;
+import com.liusoft.sc.Wrapper;
 import com.liusoft.sc.startup.ContextConfig;
 
 import java.util.HashMap;
 
 /**
  * 一个Context里面包含一个applicationContext
- * ContextConfig会去读取tomcat工程目录下的web.xml和docBase中指定的web.xml
+ * ContextConfig会去读取tomcat工程目录下的web.xml和docBase中指定的web.xml 使用webdigester
+ * tomcat_home下的context.xml 使用contextDigester
  * 解析到本示例中来
  * Created with IntelliJ IDEA.
  * User: liukunyang
@@ -16,13 +19,34 @@ import java.util.HashMap;
  * Time: 下午5:34
  * To change this template use File | Settings | File Templates.
  */
-public class StandardContext extends ContainerBase {
+public class StandardContext extends ContainerBase implements Context {
 
     private boolean reloadable = false;
 
     private String docBase = null;
 
     private String workDir = null;
+
+    /**
+     * Attribute value used to turn on/off XML validation
+     */
+    private boolean webXmlValidation = false;
+
+
+    /**
+     * Attribute value used to turn on/off XML namespace validation
+     */
+    private boolean webXmlNamespaceAware = false;
+
+    /**
+     * The DefaultContext override flag for this web application.
+     */
+    private boolean override = false;
+
+    /**
+     * The distributable flag for this web application.
+     */
+    private boolean distributable = false;
 
     /**
      * The servlet mappings for this web application, keyed by
@@ -84,4 +108,40 @@ public class StandardContext extends ContainerBase {
     }
 
 
+    @Override
+    public boolean getXmlValidation() {
+        return this.webXmlValidation;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public boolean getXmlNamespaceAware() {
+        return this.webXmlNamespaceAware;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public boolean getOverride() {
+        return this.override;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void setDistributable(boolean distributable) {
+        //To change body of implemented methods use File | Settings | File Templates.
+        this.distributable = distributable;
+    }
+
+    @Override
+    public Wrapper createWrapper() {
+        return new StandardWrapper();  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+
+    @Override
+    public void setIgnoreAnnotations(boolean ignoreAnnotations) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public boolean getIgnoreAnnotations() {
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

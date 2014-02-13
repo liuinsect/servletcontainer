@@ -65,7 +65,6 @@ public class Connector implements Initialize,Lifecycle{
 			//TODO 把需要配置的东西抽出来，server.xml
 			ss = new ServerSocket(9001);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		while( !done ){

@@ -92,4 +92,13 @@ public class StandardHost  extends  ContainerBase implements Host {
     }
 
 
+    @Override
+    public boolean getXmlValidation() {
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public boolean getXmlNamespaceAware() {
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

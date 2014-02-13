@@ -25,7 +25,7 @@ import com.liusoft.sc.util.LifecycleSupport;
  * @date 2013-9-23 下午01:43:27 
  * @version V1.0  
  */
-public class ContainerBase implements Container,Lifecycle {
+public abstract class ContainerBase implements Container,Lifecycle {
 	
     /**
      * The child Containers belonging to this Container, keyed by name.
@@ -61,7 +61,7 @@ public class ContainerBase implements Container,Lifecycle {
 			if( children.get( child.getName() ) != null ){
 				throw new IllegalArgumentException("addChild: child name "+child.getName()+ "is not unique");
 			}	
-			
+			child.setParent(this);
 			children.put( child.getName() , child );
 			
 			//TODO 是否在这里启动子容器
@@ -255,7 +255,7 @@ public class ContainerBase implements Container,Lifecycle {
 	@Override
 	public void setParent(Container container) {
 		// TODO Auto-generated method stub
-
+        this.parent = container;
 	}
 
 	/* (non-Javadoc)
