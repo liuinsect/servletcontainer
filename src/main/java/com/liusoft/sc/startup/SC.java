@@ -111,6 +111,9 @@ public class SC extends StandardService {
     }
     
     public static void main(String[] sdfasd){
+        /**
+         * Debug相关内容的初始化，包括sc主目录的初始化
+         */
     	DebugConstant.init();
     	SC sc = new SC();
     	sc.load();

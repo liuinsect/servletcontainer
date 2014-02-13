@@ -17,7 +17,12 @@ public class StandardEngine extends ContainerBase  implements Initialize , Engin
 	protected String name;
 	
 	protected String defaultHost;
-	
+
+    /** Allow the base dir to be specified explicitely for
+     * each engine. In time we should stop using catalina.base property -
+     * otherwise we loose some flexibility.
+     */
+    private String baseDir = null;
 
 	@Override
 	public Object initialize() {
@@ -68,5 +73,17 @@ public class StandardEngine extends ContainerBase  implements Initialize , Engin
         super.start();
     }
 
-
+    /**
+     * 获取SC主目录
+     * @return
+     */
+    public String getBaseDir() {
+        if( baseDir==null ) {
+            baseDir=System.getProperty("sc.base");
+        }
+        if( baseDir==null ) {
+            baseDir=System.getProperty("sc.home");
+        }
+        return baseDir;
+    }
 }

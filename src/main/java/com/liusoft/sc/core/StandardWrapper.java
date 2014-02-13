@@ -198,4 +198,22 @@ public class StandardWrapper extends ContainerBase implements Wrapper{
     public void unload() throws ServletException {
         //To change body of implemented methods use File | Settings | File Templates.
     }
+
+
+    /**
+     * Set the load-on-startup order value from a (possibly null) string.
+     * Per the specification, any missing or non-numeric value is converted
+     * to a zero, so that this servlet will still be loaded at startup
+     * time, but in an arbitrary order.
+     *
+     * @param value New load-on-startup value
+     */
+    public void setLoadOnStartupString(String value) {
+
+        try {
+            setLoadOnStartup(Integer.parseInt(value));
+        } catch (NumberFormatException e) {
+            setLoadOnStartup(0);
+        }
+    }
 }

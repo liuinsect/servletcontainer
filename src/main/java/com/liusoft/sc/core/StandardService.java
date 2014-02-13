@@ -137,6 +137,9 @@ public class StandardService implements Service,Initialize,Lifecycle{
            return;
        }
 
+       //TODO connector的初始化
+
+
        started = true;
        if( this.container != null ){
            if (container instanceof Lifecycle) {

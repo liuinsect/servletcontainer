@@ -141,7 +141,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"  
                prefix="localhost_access_log." suffix=".txt" pattern="common" resolveHosts="false"/>
         -->
-		<Context   path=""  reloadable="true" docBase="E:\workspace\allTest\servletcontainer\webProjectDemo" workDir="E:\workspace\allTest\servletcontainer\webProjectDemo"/>
+		<Context   path=""  reloadable="true" docBase="E:\workspace\allTest\servletcontainer\scWebProjectDemo" workDir="E:\workspace\allTest\servletcontainer\scWebProjectDemo"/>
       </Host>
     </Engine>
   </Service>

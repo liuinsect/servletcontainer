@@ -16,7 +16,9 @@ import javax.servlet.ServletException;
 import com.liusoft.sc.*;
 import com.liusoft.sc.connector.Request;
 import com.liusoft.sc.connector.Response;
+import com.liusoft.sc.startup.Constants;
 import com.liusoft.sc.util.LifecycleSupport;
+import com.liusoft.sc.util.StringManager;
 
 /**  
  * 容器基础类
@@ -52,6 +54,12 @@ public abstract class ContainerBase implements Container,Lifecycle {
      * The lifecycle event support for this component.
      */
     protected LifecycleSupport lifecycle = new LifecycleSupport(this);
+
+    /**
+     * The string manager for this package.
+     */
+    protected static StringManager sm =
+            StringManager.getManager(Constants.Package);
 
 
 	@Override
